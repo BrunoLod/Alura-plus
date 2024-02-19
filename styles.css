@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+
+/* Definindo as variáveis 
+   que serão utilizadas no 
+   projeto. */
+
+:root {
+    --branco-principal: #FFFFFF; 
+    --cinza-secundario: #C0C0C0; 
+    --botao-vermelho: #CC162C;
+    --background-color:#020202;
+
+    --botao-vermelho-efeito: #db2439;
+    --botao-transparente-efeito: #d4d4d42a;
+
+    --fonte-principal: "Inter", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* No body, que é o corpo da página, estou 
+   passando os parâmetros gerais dos elementos 
+   que a compõe. Note que também passo o tamanho 
+   da fonte e seu respectivo peso, mesmo que 
+   esses não sirvam para todos os demais, por quê?
+   
+   Bom, porque uma forma de atingir diversos elementos
+   da página que possuem tais valores, de modo que
+   eu não precise um a um alterar, bem como, quando
+   precisar colocar valores diferentes dos que foram
+   passados, posso escrevê-los nas classes pertinentes. */
+
+body {
+    background-color: var(--background-color);
+    color: var(--branco-principal);
+    
+    font-family: var(--fonte-principal);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* Note que aqui eu fiz algo que eu nunca tinha feito 
+   antes, passei como background, que preencherá a minha
+   classe principal, que na verdade se trata de uma 
+   seção, portanto de um container, uma imagem. 
+   
+   Esse modo difere-se do que até antes eu fazia, 
+   adicionando a imagem via HTML, mas por quê? 
+   As diferenças das abordagens se relaciona 
+   ao propósito de cada qual: quando a imagem
+   na verdade faz parte do fundo, do ornamento 
+   visual da página, não sendo mero acessório, 
+   chama-se a imagem como background direto no 
+   CSS, enquanto que quando for o oposto, chama-a
+   via HTML, passando um texto alternativo ao 
+   caso de não for enviada. 
+   
+   Os parâmetros repeat é para quando o background
+   continua a ser replicado, formando um efeito de 
+   reflexo na página, enquanto que o size como contain
+   é um modo de preencher todo o container no qual 
+   a imagem está circunscrita. 
+   
+   Estou definindo coo 100vh a altura, pois pretendo 
+   que a seção "fique em toda a tela".*/
+
+.principal {
+    background-image: url("Assets/Background.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    /* Veja que não estou utilizando o flexbox, mas o grid, 
+       por quê? O flex é muito bom para casos unidimensionais, 
+       nos quais os itens se referem apenas a uma linha ou 
+       coluna. O grid, por outro lado, permite o manejo mais
+       complexo dos itens dispostos na tela, tanto em linhas 
+       quanto colunas, sendo o caso do atual projeto.*/
+    
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+   height: 100vh; 
+
+   /*Alinhando os elementos da página 
+     na sua respectiva seção, de modo
+     que o primeiro se refere a um 
+     alinhamento, por assim dizer, 
+     macro, alinhando todos os itens
+     com base na seção e depois alinhando
+     os elementos internos a ele também 
+     por meio do text-align. 
+     
+     Algo importante de saber é que o text-align
+     não alinha apenas texto, mas também qualquer
+     item que estiver interno a <section>, tendo 
+     em vista que ela, por padrão, já apresenta
+     o display:block.*/
+
+   align-items: center;
+   text-align: center;
+}
+
+.container__titulo {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.container__imagem {
+    /* Entendendo esse parâmetro:
+    
+       Note que eu passei quatro valores consecutivos, 
+       mas por quê? Quando me utilizo desses abordagem, 
+       estou dizendo que o primeiro elemento é o top, 
+       o segundo é o right, o terceiro é o bottom e
+       o quarto é o left; em síntese, é como se fosse 
+       um relógio anti-horário. */
+
+    margin: 1em 0 2em 0;
+
+}
+
+.container__botao {
+    background-color: var(--botao-vermelho);
+    color: var(--branco-principal);
+    border-radius: 5px;
+
+    /*Mais uma unidade de medida nova, só que
+      no caso relativa. A unidade "em" se refere
+      a ter o tamanho da fonte. Nesse sentido, o
+      espaçamento aqui passado é equivalente ao 
+      tamanho da fonte do texto. */
+
+    padding: 1em;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 1em;
+
+}
+
+.container__botao:hover {
+    background-color: var(--botao-vermelho-efeito);
+    color: var(--background-color);
+
+    font-weight: 700;
+}
+
+.container__botao__secundario {
+
+    /* Esse botão não apresenta cor. */
+    background-color: transparent;
+    color: var(--cinza-secundario);
+    
+    /* Tamanho da borda em px, o tipo da linha 
+       da borda e a sua cor. */
+    border: 2px solid var(--branco-principal);
+    border-radius: 5px;
+    padding: 1em;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 1em;
+    
+}
+
+.container__botao__secundario:hover {
+    background-color: var(--botao-transparente-efeito);
+    
+    font-weight: 700;
+}
+
+.botao__combo {
+    display: inline-block;
+    margin-top: 1em;
+}
+
+.container__aviso {
+    font-size: 12px;
+    color: var(--cinza-secundario);
+}
+
+.container__box {
+    
+    /* Quando passo dois valores como aqui estão, 
+       estou dizendo que o primeiro se refere a 
+       cima e baixo, enquanto que o segundo a 
+       direita e a esquerda. */
+
+    margin: 0 6em;
+}
+
+.principal__secundario {
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+    height: 100vh; 
+
+    align-items: center;
+    margin: 0 10em;
+}
+
+.container__descricao {
+    padding: 2em;
+}
+
+.container__secundario__titulo {
+    font-weight: 700;
+    font-size: 48px;
+    color: var(--branco-principal);
+    margin-bottom: 0.2em;
+}
+
+.descricao__texto {
+    color: var(--cinza-secundario);
+}
+
+.imagem__secundaria {
+    width: 80%;
+}
+
+.dispositivos {
+    text-align: center;
+}
+
+.dispositivos__lista {
+    display: flex;
+    justify-content: center;
+
+    /* Tendo em vista que construímos uma lista
+       e essa é uma classe de estilização dela e 
+       que por padrão essa apresenta um estilo 
+       determinado que demonstra que se trata de 
+       uma lista, para que consigamos tirar qualquer
+       item, deixando apenas os nomes dos itens, 
+       temos que passar o parâmetro a seguir. */
+
+    list-style-type: none;
+    margin: 5em 0;
+}
+
+.dispositivos__titulos {
+    font-weight: 700;
+    font-size: 48px;
+}
+
+.lista__item {
+    font-weight: 700;
+    font-size: 32px;
+}
+
+.rodape {
+    text-align: center;
+    margin: 5em 3em;
+}
+
+.rodape__lista {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin-top: 1em;
+    
+}
+
+/* Quando eu possuo uma tag âncora 
+   numa série de listas, eu tenho que, 
+   caso queira estilizar, fazer o que 
+   está a seguir, mencionando o "a"
+   antes das chaves. */
+
+.lista__link a{
+    text-decoration: none;
+    color: var(--branco-principal);
+    font-size: 16px;
+    margin-left: 1em;
+}
+
+.lista__link a:hover {
+    color: var(--botao-vermelho);
+}
+
+.rodape__texto {
+    margin-top: 1.2em;
+    color: var(--cinza-secundario);
+    font-size: 14px;
+}
